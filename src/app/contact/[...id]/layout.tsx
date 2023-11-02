@@ -1,16 +1,7 @@
 import React from 'react';
-import { ResolvingMetadata } from 'next';
 import Image from 'next/image';
 
-interface Props {
-  params: any;
-  searchParams: any;
-}
-
-export function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-) {
+export function generateMetadata({ params }: { params: { id: [] } }) {
   let id: string = params.id.join();
   id = (id.charAt(0).toUpperCase() + id.slice(1)).replaceAll('-', ' ');
 
