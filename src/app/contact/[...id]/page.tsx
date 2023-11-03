@@ -1,9 +1,7 @@
 import RouteButton from '@/app/components/route-button/RouteButton';
 import React from 'react';
-import Image from 'next/image';
 
 function ContactDetail({ params }: any) {
-  console.log(params.id.join().slice(params.id.join().indexOf('-') + 1));
   return (
     <>
       <p>
