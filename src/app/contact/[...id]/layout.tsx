@@ -27,8 +27,8 @@ function DetailLayout({ children, params }: { children: React.ReactNode; params:
         {detailId.toUpperCase().replaceAll('-', ' ')} <br />
       </h1>
       <div
-        className={`rounded-md mb-5 border-4 border-slate-300 overflow-hidden ${
-          isLoading && 'flex flex-row justify-center items-center'
+        className={`rounded-md mb-5 border-4 border-slate-500 overflow-hidden ${
+          isLoading && 'flex flex-row justify-center items-center bg-yellow-300'
         }`}
         style={{ width: imageSizes.width, height: imageSizes.height }}>
         {isLoading && <LoadingSnipper />}
