@@ -1,16 +1,20 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import Image from 'next/image';
+import LoadingSnipper from '@/app/components/loading-snipper/LoadingSnipper';
 
-export function generateMetadata({ params }: { params: { id: [] } }) {
-  let id: string = params.id.join();
-  id = (id.charAt(0).toUpperCase() + id.slice(1)).replaceAll('-', ' ');
+// function generateMetadata({ params }: { params: { id: [] } }) {
+//   console.log(params);
+//   let id: string = params.id.join();
+//   id = (id.charAt(0).toUpperCase() + id.slice(1)).replaceAll('-', ' ');
 
-  return {
-    title: `Blog | ${id}`,
-  };
-}
+//   return {
+//     title: `Blog | ${id}`,
+//   };
+// }
 
 function DetailLayout({ children, params }: { children: React.ReactNode; params: any }) {
+  const [isLoading, setIsLoading] = useState(true);
   const detailId = params.id.join();
   const imageSizes = {
     width: 1000,
@@ -22,15 +26,24 @@ function DetailLayout({ children, params }: { children: React.ReactNode; params:
       <h1 className="font-bold text-xl mb-4 border-b-2 border-b-slate-600 inline-block pb-2">
         {detailId.toUpperCase().replaceAll('-', ' ')} <br />
       </h1>
-      <Image
-        src={`https://picsum.photos/id/${
-          detailId.slice(detailId.indexOf('-') + 1) * 10
-        }/${imageSizes.width}/${imageSizes.height}`}
-        alt="test"
-        className="rounded-md mb-5 border-4 border-slate-300"
-        width={imageSizes.width}
-        height={imageSizes.height}
-      />
+      <div
+        className={`rounded-md mb-5 border-4 border-slate-300 overflow-hidden ${
+          isLoading && 'flex flex-row justify-center items-center'
+        }`}
+        style={{ width: imageSizes.width, height: imageSizes.height }}>
+        {isLoading && <LoadingSnipper />}
+        <Image
+          src={`https://picsum.photos/id/${
+            detailId.slice(detailId.indexOf('-') + 1) * 10
+          }/${imageSizes.width}/${imageSizes.height}`}
+          alt="test"
+          className={`${isLoading && 'hidden'}`}
+          width={imageSizes.width}
+          height={imageSizes.height}
+          onLoad={() => setIsLoading(false)}
+          priority
+        />
+      </div>
       <div>{children}</div>
     </div>
   );
