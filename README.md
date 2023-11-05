@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 
-[Go Live]([Go Live](https://next-example-1.netlify.app))
+[Duck Duck Go](https://duckduckgo.com)
 
 
 First, run the development server:
