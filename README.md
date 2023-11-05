@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 
-[Go Live](https://next-example-1.netlify.app)
+### [Go Live](https://next-example-1.netlify.app)
 
 
 First, run the development server:
